@@ -36,6 +36,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(static));
 
+app.get('/', (req, res) => {
+    res.render('main');
+})
 app.get('/users', (req, res) => {
     res.render('users', {users});
 })
