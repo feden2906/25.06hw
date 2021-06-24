@@ -21,22 +21,60 @@ const expressHbs = require('express-handlebars');
 const fs = require('fs');
 const path = require('path');
 const users = require('./users.json');
-console.log(JSON.parse(users));
 
 const app = express();
 const static = path.join(__dirname, 'static');
 
-// app.engine('.hbs', expressHbs({
-//     defaultLayout: false,
-// }));
+app.engine('.hbs', expressHbs({
+    defaultLayout: false,
+}));
 
-// app.set('view engine', '.hbs');
-// app.set('views', static);
+app.set('view engine', '.hbs');
+app.set('views', static);
 
-// app.use(express.json());
-// app.use(express.urlencoded({extended: true}));
-// app.use(express.static, static);
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(express.static(static));
 
-app.listen(3000, () => {
-    console.log('App listen 3000');
+app.get('/users', (req, res) => {
+    res.render('users', {users});
+})
+app.get('/login', (req, res) => {
+    res.render('login');
+})
+app.get('/reg', (req, res) => {
+    res.render('reg');
+})
+
+app.post('/login', (req, res) => {
+    const userData = req.body;
+
+    users.find(user => {
+        if (user.email === userData.email && user.password === userData.password) {
+            res.json(user);
+            return;
+        }
+    })
+
+    res.json('You are not registred.');
+})
+
+app.post('/reg', (req, res) => {
+    const userData = req.body;
+
+    users.find(user => {
+        if (user.email === userData.email) {
+            res.json('Error! This email is already taken.');
+            return;
+        }
+    })
+
+    users.push(userData);
+    fs.writeFile('./users.json', JSON.stringify(users), () => {});
+
+    res.json('You are registered successfully!');
+})
+
+app.listen(3200, () => {
+    console.log('App listen 3200');
 })
