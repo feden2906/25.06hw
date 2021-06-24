@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Anna", 
+        "email": "anna@anna.ua", 
+        "password": "anna"
+    }, {
+        "name": "Max", 
+        "email": "max@max.ua", 
+        "password": "max"
+    }, {
+        "name": "Inna", 
+        "email": "inna@inna.ua", 
+        "password": "inna"
+    }, {
+        "name": "Dima", 
+        "email": "dima@dima.ua", 
+        "password": "dima"
+    }, {
+        "name": "Alex", 
+        "email": "alex@alex.ua", 
+        "password": "alex"
+    }
+]
