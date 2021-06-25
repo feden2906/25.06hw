@@ -51,26 +51,24 @@ app.get('/reg', (req, res) => {
 
 app.post('/login', (req, res) => {
     const userData = req.body;
+    const user = users.find(user => (user.email === userData.email && user.password === userData.password))
 
-    users.find(user => {
-        if (user.email === userData.email && user.password === userData.password) {
-            res.json(user);
-            return;
-        }
-    })
+    if (!!user) {
+        res.json(user);
+        return;
+    }
 
     res.json('You are not registred.');
 })
 
 app.post('/reg', (req, res) => {
     const userData = req.body;
+    const itsTrue = !!users.find(user => user.email === userData.email);
 
-    users.find(user => {
-        if (user.email === userData.email) {
-            res.json('Error! This email is already taken.');
-            return;
-        }
-    })
+    if (itsTrue) {
+        res.json('Error! This email is already taken.');
+        return;
+    }
 
     users.push(userData);
     fs.writeFile('./users.json', JSON.stringify(users), () => {});
@@ -78,6 +76,6 @@ app.post('/reg', (req, res) => {
     res.json('You are registered successfully!');
 })
 
-app.listen(3200, () => {
-    console.log('App listen 3200');
+app.listen(3000, () => {
+    console.log('App listen 3000');
 })
