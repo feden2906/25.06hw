@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
 const usersController = require('../controllers/users.controller');
+const usersMiddlewar = require('../middlewars/users.middlewar');
 
-router.post('/', usersController.createUser);
+router.post('/', usersMiddlewar.checkIsUserPresent, usersController.createUser);
 router.get('/', usersController.getAllUsers);
 router.get('/:userId', usersController.getUserById);
 router.put('/:userId', usersController.updateUserById);
