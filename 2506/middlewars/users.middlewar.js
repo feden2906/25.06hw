@@ -1,4 +1,3 @@
-const {usersService} = require('../services');
 const {usersDB} = require('../dataBase');
 
 module.exports = {
@@ -13,4 +12,4 @@ module.exports = {
 
         next();
     }
-}
+};

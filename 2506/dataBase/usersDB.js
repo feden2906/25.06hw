@@ -1,1 +1,1 @@
-module.exports = [{"name":"Nata","email":"nata@nata.ua","password":"nata"},{"name":"Alex","email":"alex@alex.ua","password":"alex"},{"name":"Boba","email":"boba@boba.ua","password":"boba"}];
+module.exports = [{"name":"Nata","email":"nata@nata.ua","password":"nata"},{"name":"Alex","email":"alex@alex.ua","password":"alex"}];
