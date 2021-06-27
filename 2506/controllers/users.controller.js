@@ -10,15 +10,15 @@ module.exports = {
         res.json(users);
     },
     getUserById: (req, res) => {
-        const user = usersService.getUserById(req.params);
+        const user = usersService.getUserById(req.params.userId);
         res.json(user);
     },
     updateUserById: (req, res) => {
-        const user = usersService.updateUserById(req.params, req.body);
+        const user = usersService.updateUserById(req.params.userId, req.body);
         res.json(user);
     },
     deleteUserById: (req, res) => {
-        usersService.deleteUserById(req.params);
+        usersService.deleteUserById(req.params.userId);
         res.json('You deleted successfully.');
     }
 };
