@@ -1,5 +1,5 @@
-const usersService = require('../services/users.service');
-const usersDB = require('../dataBase/usersDB');
+const {usersService} = require('../services');
+const {usersDB} = require('../dataBase');
 
 module.exports = {
     checkIsUserPresent: (req, res, next) => {

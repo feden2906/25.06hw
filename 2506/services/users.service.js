@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const usersDbDir = path.join(__dirname, '../', 'dataBase', 'usersDB.js');
-const usersDB = require('../dataBase/usersDB');
+const {usersDB} = require('../dataBase');
 let str;
 
 module.exports = {

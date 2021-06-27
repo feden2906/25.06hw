@@ -1,4 +1,4 @@
-const usersService = require('../services/users.service');
+const {usersService} = require('../services');
 
 module.exports = {
     createUser: (req, res) => {
